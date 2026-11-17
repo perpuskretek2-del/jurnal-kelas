@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jurnal Kelas SD - Fast-Log</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+  <!-- Halaman 1: Login -->
+  <div id="page-login" class="page-section active min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-sm text-center">
+      <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">🏫</div>
+      <h1 class="text-2xl font-bold mb-2">Jurnal Kelas SD</h1>
+      <p class="text-gray-500 text-sm mb-6">Sistem Fast-Log Kurikulum Merdeka</p>
+      
+      <button onclick="nav('dashboard')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.761H12.545z"/></svg>
+        Masuk dengan belajar.id
+      </button>
+    </div>
+  </div>
+
+  <!-- Halaman 2: Dashboard Harian -->
+  <div id="page-dashboard" class="page-section min-h-screen pb-20">
+    <div class="bg-blue-600 text-white p-6 rounded-b-3xl shadow-md">
+      <div class="flex justify-between items-center mb-4">
+        <div>
+          <p class="text-sm opacity-80">Halo, Pak Guru</p>
+          <h2 class="text-xl font-bold">Kelas 4A — Fase B</h2>
+        </div>
+        <button onclick="nav('login')" class="text-sm bg-blue-800 px-3 py-1 rounded-lg">Keluar</button>
+      </div>
+      <div class="bg-white/20 p-4 rounded-xl backdrop-blur-sm">
+        <p class="text-sm mb-1" id="current-date">Selasa, 17 Nov 2026</p>
+        <div class="flex justify-between items-center">
+          <p class="font-semibold">Jurnal Hari Ini</p>
+          <span class="bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-1 rounded">Belum Diisi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-4 mt-2">
+      <h3 class="font-bold text-gray-700 mb-3">Kehadiran Hari Ini</h3>
+      <div class="grid grid-cols-4 gap-2 text-center">
+        <div class="bg-green-100 text-green-700 p-2 rounded-xl"><div class="text-lg font-bold">26</div><div class="text-xs">Hadir</div></div>
+        <div class="bg-yellow-100 text-yellow-700 p-2 rounded-xl"><div class="text-lg font-bold">1</div><div class="text-xs">Sakit</div></div>
+        <div class="bg-blue-100 text-blue-700 p-2 rounded-xl"><div class="text-lg font-bold">1</div><div class="text-xs">Izin</div></div>
+        <div class="bg-red-100 text-red-700 p-2 rounded-xl"><div class="text-lg font-bold">0</div><div class="text-xs">Alpa</div></div>
+      </div>
+    </div>
+
+    <div class="px-4 mt-4">
+      <button onclick="nav('input')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-blue-200">
+        + Isi Jurnal Sekarang
+      </button>
+    </div>
+  </div>
+
+  <!-- Halaman 3: Form Input Jurnal -->
+  <div id="page-input" class="page-section min-h-screen bg-white">
+    <div class="sticky top-0 bg-white border-b px-4 py-3 flex items-center gap-3 z-10">
+      <button onclick="nav('dashboard')" class="text-gray-500 font-bold text-xl">←</button>
+      <h2 class="font-bold text-lg">Isi Jurnal</h2>
+    </div>
+
+    <div class="p-4 space-y-6">
+      <!-- Step 1: Mapel & Materi -->
+      <div>
+        <h3 class="font-bold text-gray-700 mb-2">1. Mata Pelajaran & Materi</h3>
+        <div class="flex gap-2 overflow-x-auto pb-2 hide-scrollbar">
+          <button class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap border-2 border-blue-600">IPAS</button>
+          <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">Matematika</button>
+          <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap">B. Indonesia</button>
+        </div>
+        <select class="w-full mt-3 border border-gray-300 rounded-lg p-3 bg-gray-50 text-sm">
+          <option>Pilih Tujuan Pembelajaran (TP)...</option>
+          <option>TP 1: Mengidentifikasi bagian tubuh tumbuhan</option>
+          <option>TP 2: Memahami siklus rantai makanan</option>
+        </select>
+        <textarea class="w-full mt-3 border border-gray-300 rounded-lg p-3 bg-gray-50 text-sm h-24" placeholder="Detail kegiatan belajar hari ini..."></textarea>
+      </div>
+
+      <!-- Step 2: Absensi -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-bold text-gray-700">2. Absensi Cepat</h3>
+          <span class="text-xs text-gray-500">Semua default Hadir (H)</span>
+        </div>
+        <div class="space-y-2">
+          <!-- Siswa 1 -->
+          <div class="flex justify-between items-center p-3 border rounded-lg">
+            <span class="font-medium text-sm">1. Budi Santoso</span>
+            <div class="flex gap-1">
+              <button class="w-8 h-8 rounded-full bg-green-500 text-white text-xs font-bold">H</button>
+              <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 text-xs font-bold">S</button>
+              <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 text-xs font-bold">I</button>
+              <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 text-xs font-bold">A</button>
+            </div>
+          </div>
+          <!-- Siswa 2 -->
+          <div class="flex justify-between items-center p-3 border rounded-lg bg-yellow-50">
+            <span class="font-medium text-sm">2. Siti Aminah</span>
+            <div class="flex gap-1">
+              <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 text-xs font-bold">H</button>
+              <button class="w-8 h-8 rounded-full bg-yellow-400 text-white text-xs font-bold">S</button>
+              <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 text-xs font-bold">I</button>
+              <button class="w-8 h-8 rounded-full bg-gray-100 text-gray-500 text-xs font-bold">A</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="nav('report')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl">
+        Simpan & Lihat Laporan
+      </button>
+    </div>
+  </div>
+
+  <!-- Halaman 4: Cetak Laporan -->
+  <div id="page-report" class="page-section min-h-screen bg-gray-100 pb-20">
+    <div class="bg-white border-b px-4 py-4 flex justify-between items-center">
+      <h2 class="font-bold text-lg">Laporan Bulanan</h2>
+      <button onclick="nav('dashboard')" class="text-blue-600 text-sm font-semibold">Tutup</button>
+    </div>
+    
+    <div class="p-4 space-y-4">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 text-center">
+        <div class="text-4xl mb-2">📄</div>
+        <h3 class="font-bold text-gray-800">Rekap Jurnal November</h3>
+        <p class="text-sm text-gray-500 mb-4">Siap dicetak untuk tanda tangan Kepala Sekolah</p>
+        
+        <div class="grid grid-cols-1 gap-3">
+          <button class="bg-gray-800 text-white py-3 rounded-lg font-semibold flex justify-center items-center gap-2">
+            📥 Unduh PDF (Kop Sekolah)
+          </button>
+          <button class="bg-green-600 text-white py-3 rounded-lg font-semibold flex justify-center items-center gap-2">
+            📊 Ekspor ke Excel (.xlsx)
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl shadow-sm border border-green-200">
+        <h3 class="font-bold text-gray-800 mb-2">Info Grup
